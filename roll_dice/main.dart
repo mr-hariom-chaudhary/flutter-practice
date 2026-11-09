@@ -25,7 +25,9 @@ class GradientContainer extends StatelessWidget {
           children: [
             Text(text, style: TextStyle(color: Colors.white, fontSize: 28)),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                print('Rolled');
+              },
               child: Text('Roll', style: TextStyle(color: Colors.white)),
             ),
           ],
