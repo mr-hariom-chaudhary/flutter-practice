@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(body: GradientContainer()),
-    ),
-  );
+  runApp(MaterialApp(home: Scaffold(body: GradientContainer())));
 }
 
 class GradientContainer extends StatefulWidget {
@@ -17,9 +14,12 @@ class GradientContainer extends StatefulWidget {
 
 class _GradientContainerState extends State<GradientContainer> {
   int currentDice = 1;
+  final randomizer = Random();
 
   void rollDice() {
-    print('Rolled');
+    setState(() {
+    currentDice = randomizer.nextInt(6) + 1;
+    });
   }
 
   @override
@@ -32,11 +32,12 @@ class _GradientContainerState extends State<GradientContainer> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('$currentDice', style: TextStyle(color: Colors.white, fontSize: 28)),
+            Text(
+              '$currentDice',
+              style: TextStyle(color: Colors.white, fontSize: 28),
+            ),
             TextButton(
-              onPressed: () {
-                print('Rolled');
-              },
+              onPressed: rollDice,
               child: Text('Roll', style: TextStyle(color: Colors.white)),
             ),
           ],
