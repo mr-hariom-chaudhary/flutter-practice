@@ -3,15 +3,24 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: Scaffold(body: GradientContainer(text: "Hello Hariom")),
+      home: Scaffold(body: GradientContainer()),
     ),
   );
 }
 
-class GradientContainer extends StatelessWidget {
-  const GradientContainer({super.key, required this.text});
+class GradientContainer extends StatefulWidget {
+  const GradientContainer({super.key});
 
-  final String text;
+  @override
+  State<GradientContainer> createState() => _GradientContainerState();
+}
+
+class _GradientContainerState extends State<GradientContainer> {
+  int currentDice = 1;
+
+  void rollDice() {
+    print('Rolled');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +32,7 @@ class GradientContainer extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(text, style: TextStyle(color: Colors.white, fontSize: 28)),
+            Text('$currentDice', style: TextStyle(color: Colors.white, fontSize: 28)),
             TextButton(
               onPressed: () {
                 print('Rolled');
